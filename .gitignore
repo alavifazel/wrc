@@ -1,0 +1,9 @@
+build/
+
+# Object files
+*.o
+*.obj
+
+# Libraries
+*.lib
+*.a

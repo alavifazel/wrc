@@ -3,9 +3,11 @@
 using namespace std;
 
 int main() {
-    relay r1("192.168.1.51");
-    r1.on();
-    r1.off();
-    cout << r1.numberOfDevices() << endl;
+  relay r1{"192.168.1.51"};
+  r1.off();
+  sleep(1000); 
+  r1.on();
+  cout << r1 << endl;
 }
+
 
