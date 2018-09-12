@@ -28,18 +28,23 @@ int main(int ac, char* av[]) {
 	      options(desc).run(), vm);
     po::notify(vm);
     
-    if (vm.count("help")) {
-      cout << "Usage: options_description [options]\n";
-      cout << desc;
-      return 0;
-    }
 
-    if (vm.count("address")){
+    if (vm.count("address")) {
       relay r1{vm["address"].as<string>()};
-      if( vm["turn"].as<string>() == "on") {
-	r1.on();
+      if(!vm.count("turn")){	
+	if(r1.isOn()){
+	  r1.off();
+	  cout << "Relay turned off.\n";
+	} else {
+	  r1.on();
+	  cout << "Relay turned on.\n";
+	}
       } else {
-	r1.off();
+	if( vm["turn"].as<string>() == "on") {
+	  r1.on();
+	} else {
+	  r1.off();
+	}
       }
     }
 

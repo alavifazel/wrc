@@ -7,7 +7,7 @@
 class HTTP {
 public:
   HTTP();
-  void connect(const std::string url);
+  std::string connect(const std::string url);
   ~HTTP();
 private:
   CURL *curl;

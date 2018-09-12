@@ -1,8 +1,16 @@
 #include "relay.h"
 #include <iostream>
-
+using namespace std; 
+using namespace std;
 relay::relay(const std::string address): address{address} {
     counter++;
+    std::string url = address + "/STATUS";
+    if(h.connect(url) == "on") {
+      currentStatus = RelayStatus::on;
+    }
+    if(h.connect(url) == "off") {
+      currentStatus = RelayStatus::off;
+    }
 }
 
 relay::~relay(){
@@ -29,9 +37,9 @@ int relay::counter = 0;
 std::ostream& operator<<(std::ostream& os, relay const& r) {
   std::cout << "Relay's ip: " << r.address << '\n';
   if(r.currentStatus == RelayStatus::on) {
-    std::cout << "Current status: On.\n ";
+    std::cout << "Current status: On\n ";
   } else {
-    std::cout << "Current status: Off.\n";
+    std::cout << "Current status: Of.\n";
   }
 }
 
