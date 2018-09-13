@@ -25,9 +25,4 @@ public:
     RelayStatus currentStatus;
 };
 
-inline void sleep(int x) {
-  std::this_thread::sleep_for(std::chrono::milliseconds(x));
-}
-
-
 #endif // RELAY_H
